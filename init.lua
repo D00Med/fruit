@@ -130,3 +130,5 @@ function fruit.register_ores()
 		y_max          = 31000,
 	})
 end
+
+fruit.register_ores()
