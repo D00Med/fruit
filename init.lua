@@ -1,4 +1,34 @@
 
+minetest.register_node("fruit:leaves_with_mango", {
+	description = "Leaves with Mango",
+	drawtype = "allfaces",
+	tiles = {
+		"default_jungleleaves.png^fruit_mango_leaves.png",
+	},
+	paramtype = "light",
+	groups = {snappy=1, oddly_breakeable_by_hand=1, not_in_creative_inventory=1},
+	drop = "default:jungleleaves",
+	on_destruct = function(pos)
+		minetest.add_item(pos, "fruit:mango")
+	end,
+	sounds = default.node_sound_leaves_defaults()
+})
+
+minetest.register_node("fruit:leaves_with_berry", {
+	description = "Leaves with Berry",
+	drawtype = "allfaces",
+	tiles = {
+		"default_leaves_simple.png^fruit_berry_leaves.png",
+	},
+	paramtype = "light",
+	groups = {snappy=1, oddly_breakeable_by_hand=1, not_in_creative_inventory=1},
+	drop = "default:bush_leaves",
+	on_destruct = function(pos)
+		minetest.add_item(pos, "fruit:berry")
+	end,
+	sounds = default.node_sound_leaves_defaults()
+})
+
 minetest.register_node("fruit:leaves_with_pear", {
 	description = "Leaves with Pear",
 	drawtype = "allfaces",
@@ -83,51 +113,133 @@ minetest.register_craftitem("fruit:orange", {
 	on_use = minetest.item_eat(2)
 })
 
+minetest.register_craftitem("fruit:berry", {
+	description = "Berry",
+	inventory_image = "fruit_berry.png",
+	on_use = minetest.item_eat(1)
+})
+
+minetest.register_craftitem("fruit:mango", {
+	description = "Mango",
+	inventory_image = "fruit_mango.png",
+	on_use = minetest.item_eat(2)
+})
+
 fruit = {}
 
 function fruit.register_ores()
 	minetest.register_ore({
-		ore_type       = "blob",
+		ore_type       = "scatter",
 		ore            = "fruit:leaves_with_orange",
 		wherein        = "default:acacia_leaves",
 		clust_scarcity = 15 * 15 * 15,
 		clust_num_ores = 6,
-		clust_size     = 5,
+		clust_size     = 4,
 		y_min          = 0,
 		y_max          = 31000,
+		noise_params    = {
+			offset = 0.5,
+			scale = 1,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 766,
+			octaves = 1,
+			persist = 0.0
+		},
+	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "fruit:leaves_with_berry",
+		wherein        = "default:bush_leaves",
+		clust_scarcity = 10 * 10 * 10,
+		clust_num_ores = 6,
+		clust_size     = 4,
+		y_min          = 0,
+		y_max          = 31000,
+		noise_params    = {
+			offset = 0.5,
+			scale = 1,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 766,
+			octaves = 1,
+			persist = 0.0
+		},
+	})
+	
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "fruit:leaves_with_mango",
+		wherein        = "default:jungleleaves",
+		clust_scarcity = 15 * 15 * 15,
+		clust_num_ores = 6,
+		clust_size     = 4,
+		y_min          = 0,
+		y_max          = 31000,
+		noise_params    = {
+			offset = 0.5,
+			scale = 1,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 766,
+			octaves = 1,
+			persist = 0.0
+		},
 	})
 
 	minetest.register_ore({
-		ore_type       = "blob",
+		ore_type       = "scatter",
 		ore            = "fruit:leaves_with_peach",
 		wherein        = "default:leaves",
 		clust_scarcity = 15 * 15 * 15,
 		clust_num_ores = 6,
-		clust_size     = 5,
+		clust_size     = 4,
 		y_min          = 0,
 		y_max          = 31000,
+		noise_params    = {
+			offset = 0.5,
+			scale = 1,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 766,
+			octaves = 1,
+			persist = 0.0
+		},
 	})
 
 	minetest.register_ore({
-		ore_type       = "blob",
+		ore_type       = "scatter",
 		ore            = "fruit:leaves_with_pear",
 		wherein        = "default:leaves",
 		clust_scarcity = 15 * 15 * 15,
 		clust_num_ores = 6,
-		clust_size     = 5,
+		clust_size     = 4,
 		y_min          = 0,
 		y_max          = 31000,
+		noise_params    = {
+			offset = 0.5,
+			scale = 1,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 766,
+			octaves = 1,
+			persist = 0.0
+		},
 	})
 
 	minetest.register_ore({
-		ore_type       = "blob",
+		ore_type       = "scatter",
 		ore            = "fruit:leaves_with_plum",
 		wherein        = "default:leaves",
 		clust_scarcity = 15 * 15 * 15,
 		clust_num_ores = 6,
-		clust_size     = 5,
+		clust_size     = 4,
 		y_min          = 0,
 		y_max          = 31000,
+		noise_params    = {
+			offset = 0.5,
+			scale = 1,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 766,
+			octaves = 1,
+			persist = 0.0
+		},
 	})
 end
 
