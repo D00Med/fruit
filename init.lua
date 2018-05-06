@@ -244,3 +244,55 @@ function fruit.register_ores()
 end
 
 fruit.register_ores()
+
+minetest.register_lbm({
+	name = "fruit:growth",
+	nodenames = {"default:leaves"},
+	run_at_every_load = true,
+	action = function(pos, node)
+		if math.random(1,50000) == 1 then
+			local fruit = math.random(1,3)
+			if fruit == 1 then
+			minetest.set_node(pos, {name="fruit:leaves_with_peach"})
+			elseif fruit == 2 then
+			minetest.set_node(pos, {name="fruit:leaves_with_pear"})
+			elseif fruit == 3 then
+			minetest.set_node(pos, {name="fruit:leaves_with_plum"})
+			end
+		end
+	end,
+})
+
+minetest.register_lbm({
+	name = "fruit:growth_jungle",
+	nodenames = {"default:jungleleaves"},
+	run_at_every_load = true,
+	action = function(pos, node)
+		if math.random(1,50000) == 1 then
+			minetest.set_node(pos, {name="fruit:leaves_with_mango"})
+		end
+	end,
+})
+
+
+minetest.register_lbm({
+	name = "fruit:growth_bush",
+	nodenames = {"default:bush_leaves"},
+	run_at_every_load = true,
+	action = function(pos, node)
+		if math.random(1,30000) == 1 then
+			minetest.set_node(pos, {name="fruit:leaves_with_berry"})
+		end
+	end,
+})
+
+minetest.register_lbm({
+	name = "fruit:growth_savanna",
+	nodenames = {"default:acacia_leaves"},
+	run_at_every_load = true,
+	action = function(pos, node)
+		if math.random(1,10000) == 1 then
+			minetest.set_node(pos, {name="fruit:leaves_with_orange"})
+		end
+	end,
+})
